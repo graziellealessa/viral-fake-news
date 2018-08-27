@@ -1,20 +1,24 @@
 # Trabaho Final
-# Modelagem de  Risco de Viralização Fake News
+# Modelagem de fake news
 # Grupo: Beatriz de Andrade, Grazielle Alessa, Hugo Dantas e Jessica Genta
 
 # Importanto bibliotecas
 library(triangle)
-library(igraph)
+#library(igraph)
 
-# Geração de dados iniciais
-# Definição de número de amigos de uma pessoa
+# Geracao de dados iniciais
+# Definicao de num. de amigos de uma pessoa
 qntMinAmigos<-1
 qntMax<-200
 qntMinAmigosB<-0
 
-# Parâmetros do modelo
+# Parametros do modelo
 beta<-0.7
 alfa<-0.4
+
+#verificar com a Beatriz
+pverify<-0.1
+pforget<-0.1
 
 # Definicao do numero de cenarios
 cenarios<-500
@@ -24,7 +28,7 @@ gera_pessoas<-function(NC = cenarios){
   # matriz de amigos da pessoa i.
   # para cada linha, temos:
   # a coluna 1 se refere ao numero total de amigos da pessoa
-  # a coluna 2 se refere ao numero de amigos believers.
+  # a coluna 2 se refere ao numero de amigos belivers.
   pessoas<-matrix(nrow = NC, ncol = 2)
   
   for (i in 1:NC){
@@ -34,24 +38,29 @@ gera_pessoas<-function(NC = cenarios){
   pessoas
 }
 
-calcula_infeccao<-function(NC = cenarios, pessoas){
+spreading_matrix<-function(NC = cenarios, pessoas){
   
-  # matriz de chance de uma pessoa passar a ser um beiver
-  # ou um not believer.
-  # coluna 1 -- chance de ser believer.
-  # coluna 2 -- chance de ser not believer.
-  prob<-matrix(nrow = NC, ncol = 2)
+  # matriz de chance de uma pessoa passar a ser um believer
+  # ou um not beliver.
+  # coluna 1 -- fi
+  # coluna 2 -- gi
+  spreading_functions_matrix<-matrix(nrow = NC, ncol = 2)
   
   for(i in 1:NC){
-    believer<-pessoas[i,2]
-    Nbeliever<-pessoas[i,1]-pessoas[i,2]
+    nbi<-pessoas[i,2]
+    nfi<-pessoas[i,1]-pessoas[i,2]
     
-    prob[i,1]<- beta( (believer*(1-alfa)) / (( believer*(1-alfa) +  Nbeliever*(1-alfa))) )
-    prob[i,2]<- beta( (Nbeliever*(1-alfa)) / (( believer*(1-alfa) +  Nbeliever*(1-alfa))) )
+    spreading_functions_matrix[i,1]<- beta*( (nbi*(1+alfa)) / (( nbi*(1+alfa) +  nfi*(1-alfa))) )
+    spreading_functions_matrix[i,2]<- beta*( (nfi*(1-alfa)) / (( nbi*(1+alfa) +  nfi*(1-alfa))) )
   }
-  
-  c(pessoas,prob)
+  cbind(pessoas,spreading_functions_matrix)
 }
 
 pessoas<-gera_pessoas()
-infec<-calcula_infeccao(cenarios,pessoas)
+pessoas_e_probabilidades<-spreading_matrix(cenarios,pessoas)
+
+#histograma das probabilidades fi
+hist(pessoas_e_probabilidades[,3],main='Histograma das probabilidades fi',xlab='Probabilidades',ylab='FrequÃªncia')
+
+#histograma das probabilidades gi
+hist(pessoas_e_probabilidades[,4],main='Histograma das probabilidades gi',xlab='Probabilidades',ylab='FrequÃªncia')
