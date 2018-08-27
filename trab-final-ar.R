@@ -24,7 +24,7 @@ gera_pessoas<-function(NC = cenarios){
   # matriz de amigos da pessoa i.
   # para cada linha, temos:
   # a coluna 1 se refere ao numero total de amigos da pessoa
-  # a coluna 2 se refere ao numero de amigos belivers.
+  # a coluna 2 se refere ao numero de amigos believers.
   pessoas<-matrix(nrow = NC, ncol = 2)
   
   for (i in 1:NC){
@@ -37,17 +37,17 @@ gera_pessoas<-function(NC = cenarios){
 calcula_infeccao<-function(NC = cenarios, pessoas){
   
   # matriz de chance de uma pessoa passar a ser um beiver
-  # ou um not beliver.
-  # coluna 1 -- chance de ser beliver.
-  # coluna 2 -- chance de ser not beliver.
+  # ou um not believer.
+  # coluna 1 -- chance de ser believer.
+  # coluna 2 -- chance de ser not believer.
   prob<-matrix(nrow = NC, ncol = 2)
   
   for(i in 1:NC){
-    beliver<-pessoas[i,2]
-    Nbeliver<-pessoas[i,1]-pessoas[i,2]
+    believer<-pessoas[i,2]
+    Nbeliever<-pessoas[i,1]-pessoas[i,2]
     
-    prob[i,1]<- beta( (beliver*(1-alfa)) / (( beliver*(1-alfa) +  Nbeliver*(1-alfa))) )
-    prob[i,2]<- beta( (Nbeliver*(1-alfa)) / (( beliver*(1-alfa) +  Nbeliver*(1-alfa))) )
+    prob[i,1]<- beta( (believer*(1-alfa)) / (( believer*(1-alfa) +  Nbeliever*(1-alfa))) )
+    prob[i,2]<- beta( (Nbeliever*(1-alfa)) / (( believer*(1-alfa) +  Nbeliever*(1-alfa))) )
   }
   
   c(pessoas,prob)
