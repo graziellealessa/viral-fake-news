@@ -9,7 +9,7 @@ https://www.rstudio.com/products/rstudio/
 
 ## Authors
 
-* **Beatriz Andrade** 
+* **Beatriz Andrade** - [beatrizac](https://github.com/beatrizac)
 * **Grazielle Alessa** - [graziellealessa](https://github.com/graziellealessa)
 * **Hugo Dantase** - [esponja92](https://github.com/esponja92)
 * **Jéssica Genta** 
