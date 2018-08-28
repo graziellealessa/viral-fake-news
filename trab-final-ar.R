@@ -117,7 +117,7 @@ par(new=T)
 plot(ecdf(pessoas_e_probabilidades2[,3]),main='',xlab='',ylab='',axes=FALSE,col="green")
 par(new=T)
 plot(ecdf(pessoas_e_probabilidades3[,3]),main='',xlab='',ylab='',axes=FALSE,col="red")
-legend("topleft", inset=.05, title="beta = 0.6", c("alfa = 0.9","alfa = 0.6","alfa = 0.9"), fill=c("blue", 'green', 'red'), horiz=FALSE)
+legend("topleft", inset=.05, title="beta = 0.9", c("alfa = 0.3","alfa = 0.6","alfa = 0.9"), fill=c("blue", 'green', 'red'), horiz=FALSE)
 
 
 # cumulativa das probabilidades not beliver
