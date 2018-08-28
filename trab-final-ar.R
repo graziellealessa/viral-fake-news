@@ -15,10 +15,6 @@ qntMinAmigosB<-0
 beta<-0.7 # parametro de espalhamento
 alfa<-0.4 # parametro de credibilidade da noticia
 
-#verificar com a Beatriz
-pverify<-0.1
-pforget<-0.1
-
 # Definicao do numero de cenarios
 cenarios<-500
 
