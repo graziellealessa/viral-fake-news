@@ -105,7 +105,7 @@ plot(ecdf(pessoas_e_probabilidades3[,4]),main='',xlab='',ylab='',axes=FALSE,col=
 legend("bottomright", inset=.05, title="beta = 0.6", c("alfa = 0.3","alfa = 0.6","alfa = 0.9"), fill=c("blue", 'green', 'red'), horiz=FALSE)
 
 
-# cenarios p beta = 0.6 e alfa variavel
+# cenarios p beta = 0.9 e alfa variavel
 pessoas_e_probabilidades1<-spreading_matrix(cenarios,pessoas,0.9,0.3)
 pessoas_e_probabilidades2<-spreading_matrix(cenarios,pessoas,0.9,0.6)
 pessoas_e_probabilidades3<-spreading_matrix(cenarios,pessoas,0.9,0.9)
