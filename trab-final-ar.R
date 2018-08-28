@@ -12,11 +12,11 @@ qntMax<-500
 qntMinAmigosB<-0
 
 # Parametros do modelo
-beta<-0.7 # parametro de espalhamento
-alfa<-0.4 # parametro de credibilidade da noticia
+bet<-0.3 # parametro de espalhamento
+alf<-0.3 # parametro de credibilidade da noticia
 
 # Definicao do numero de cenarios
-cenarios<-500
+cenarios<-3000
 
 gera_pessoas<-function(NC = cenarios){
   
@@ -33,7 +33,7 @@ gera_pessoas<-function(NC = cenarios){
   pessoas
 }
 
-spreading_matrix<-function(NC = cenarios, pessoas){
+spreading_matrix<-function(NC = cenarios, pessoas, beta = bet, alfa = alf){
   
   # matriz de chance de uma pessoa passar a ser um believer
   # ou um not beliver.
@@ -51,13 +51,80 @@ spreading_matrix<-function(NC = cenarios, pessoas){
   cbind(pessoas,spreading_functions_matrix)
 }
 
+
+# gerando matriz de pessoas.
 pessoas<-gera_pessoas()
-pessoas_e_probabilidades<-spreading_matrix(cenarios,pessoas)
 
-#histograma e cumulativa das probabilidades fi
-hist(pessoas_e_probabilidades[,3],main='Histograma das probabilidades - Beliver',xlab='Probabilidades',ylab='Frequência')
-plot(ecdf(pessoas_e_probabilidades[,3]),main='Função Cumulativa - Beliver',xlab='Chance',ylab='Probabilidades')
+# cenarios p beta = 0.3 e alfa variavel
+pessoas_e_probabilidades1<-spreading_matrix(cenarios,pessoas,0.3,0.3)
+pessoas_e_probabilidades2<-spreading_matrix(cenarios,pessoas,0.3,0.6)
+pessoas_e_probabilidades3<-spreading_matrix(cenarios,pessoas,0.3,0.9)
 
-#histograma e cumulativa das probabilidades gi
-hist(pessoas_e_probabilidades[,4],main='Histograma das probabilidades - Not Beliver',xlab='Probabilidades',ylab='Frequência')
-plot(ecdf(pessoas_e_probabilidades[,4]),main='Função Cumulativa - Not Beliver',xlab='Chance',ylab='Probabilidades')
+# cumulativa das probabilidades beliver
+#hist(pessoas_e_probabilidades[,3],main='Histograma das probabilidades - Beliver',xlab='Probabilidades',ylab='Frequência')
+plot(ecdf(pessoas_e_probabilidades1[,3]),main='Função Cumulativa - Beliver',xlab='Chance',ylab='Probabilidades',col="blue")
+par(new=T)
+plot(ecdf(pessoas_e_probabilidades2[,3]),main='',xlab='',ylab='',axes=FALSE,col="green")
+par(new=T)
+plot(ecdf(pessoas_e_probabilidades3[,3]),main='',xlab='',ylab='',axes=FALSE,col="red")
+legend("topleft", inset=.05, title="beta = 0.3", c("alfa = 0.3","alfa = 0.6","alfa = 0.9"), fill=c("blue", 'green', 'red'), horiz=FALSE)
+
+
+# cumulativa das probabilidades not beliver
+#hist(pessoas_e_probabilidades[,4],main='Histograma das probabilidades - Not Beliver',xlab='Probabilidades',ylab='Frequência')
+plot(ecdf(pessoas_e_probabilidades1[,4]),main='Função Cumulativa - Not Beliver',xlab='Chance',ylab='Probabilidades',col="blue")
+par(new=T)
+plot(ecdf(pessoas_e_probabilidades2[,4]),main='',xlab='',ylab='',axes=FALSE,col="green")
+par(new=T)
+plot(ecdf(pessoas_e_probabilidades3[,4]),main='',xlab='',ylab='',axes=FALSE,col="red")
+legend("bottomright", inset=.05, title="beta = 0.3", c("alfa = 0.3","alfa = 0.6","alfa = 0.9"), fill=c("blue", 'green', 'red'), horiz=FALSE)
+
+
+# cenarios p beta = 0.6 e alfa variavel
+pessoas_e_probabilidades1<-spreading_matrix(cenarios,pessoas,0.6,0.3)
+pessoas_e_probabilidades2<-spreading_matrix(cenarios,pessoas,0.6,0.6)
+pessoas_e_probabilidades3<-spreading_matrix(cenarios,pessoas,0.6,0.9)
+
+# cumulativa das probabilidades beliver
+#hist(pessoas_e_probabilidades[,3],main='Histograma das probabilidades - Beliver',xlab='Probabilidades',ylab='Frequência')
+plot(ecdf(pessoas_e_probabilidades1[,3]),main='Função Cumulativa - Beliver',xlab='Chance',ylab='Probabilidades',col="blue")
+par(new=T)
+plot(ecdf(pessoas_e_probabilidades2[,3]),main='',xlab='',ylab='',axes=FALSE,col="green")
+par(new=T)
+plot(ecdf(pessoas_e_probabilidades3[,3]),main='',xlab='',ylab='',axes=FALSE,col="red")
+legend("topleft", inset=.05, title="beta = 0.6", c("alfa = 0.3","alfa = 0.6","alfa = 0.9"), fill=c("blue", 'green', 'red'), horiz=FALSE)
+
+
+# cumulativa das probabilidades not beliver
+#hist(pessoas_e_probabilidades[,4],main='Histograma das probabilidades - Not Beliver',xlab='Probabilidades',ylab='Frequência')
+plot(ecdf(pessoas_e_probabilidades1[,4]),main='Função Cumulativa - Not Beliver',xlab='Chance',ylab='Probabilidades',col="blue")
+par(new=T)
+plot(ecdf(pessoas_e_probabilidades2[,4]),main='',xlab='',ylab='',axes=FALSE,col="green")
+par(new=T)
+plot(ecdf(pessoas_e_probabilidades3[,4]),main='',xlab='',ylab='',axes=FALSE,col="red")
+legend("bottomright", inset=.05, title="beta = 0.6", c("alfa = 0.3","alfa = 0.6","alfa = 0.9"), fill=c("blue", 'green', 'red'), horiz=FALSE)
+
+
+# cenarios p beta = 0.6 e alfa variavel
+pessoas_e_probabilidades1<-spreading_matrix(cenarios,pessoas,0.9,0.3)
+pessoas_e_probabilidades2<-spreading_matrix(cenarios,pessoas,0.9,0.6)
+pessoas_e_probabilidades3<-spreading_matrix(cenarios,pessoas,0.9,0.9)
+
+# cumulativa das probabilidades beliver
+#hist(pessoas_e_probabilidades[,3],main='Histograma das probabilidades - Beliver',xlab='Probabilidades',ylab='Frequência')
+plot(ecdf(pessoas_e_probabilidades1[,3]),main='Função Cumulativa - Beliver',xlab='Chance',ylab='Probabilidades',col="blue")
+par(new=T)
+plot(ecdf(pessoas_e_probabilidades2[,3]),main='',xlab='',ylab='',axes=FALSE,col="green")
+par(new=T)
+plot(ecdf(pessoas_e_probabilidades3[,3]),main='',xlab='',ylab='',axes=FALSE,col="red")
+legend("topleft", inset=.05, title="beta = 0.6", c("alfa = 0.9","alfa = 0.6","alfa = 0.9"), fill=c("blue", 'green', 'red'), horiz=FALSE)
+
+
+# cumulativa das probabilidades not beliver
+#hist(pessoas_e_probabilidades[,4],main='Histograma das probabilidades - Not Beliver',xlab='Probabilidades',ylab='Frequência')
+plot(ecdf(pessoas_e_probabilidades1[,4]),main='Função Cumulativa - Not Beliver',xlab='Chance',ylab='Probabilidades',col="blue")
+par(new=T)
+plot(ecdf(pessoas_e_probabilidades2[,4]),main='',xlab='',ylab='',axes=FALSE,col="green")
+par(new=T)
+plot(ecdf(pessoas_e_probabilidades3[,4]),main='',xlab='',ylab='',axes=FALSE,col="red")
+legend("bottomright", inset=.05, title="beta = 0.9", c("alfa = 0.3","alfa = 0.6","alfa = 0.9"), fill=c("blue", 'green', 'red'), horiz=FALSE)
