@@ -23,7 +23,7 @@ gera_pessoas<-function(NC = cenarios){
   # matriz de amigos da pessoa i.
   # para cada linha, temos:
   # a coluna 1 se refere ao numero total de amigos da pessoa
-  # a coluna 2 se refere ao numero de amigos belivers.
+  # a coluna 2 se refere ao numero de amigos Believers
   pessoas<-matrix(nrow = NC, ncol = 2)
   
   for (i in 1:NC){
@@ -35,8 +35,8 @@ gera_pessoas<-function(NC = cenarios){
 
 spreading_matrix<-function(NC = cenarios, pessoas, beta = bet, alfa = alf){
   
-  # matriz de chance de uma pessoa passar a ser um believer
-  # ou um not beliver.
+  # matriz de taxa de uma pessoa passar a ser um believer
+  # ou um not Believer
   # coluna 1 -- fi
   # coluna 2 -- gi
   spreading_functions_matrix<-matrix(nrow = NC, ncol = 2)
@@ -60,9 +60,9 @@ pessoas_e_probabilidades1<-spreading_matrix(cenarios,pessoas,0.3,0.3)
 pessoas_e_probabilidades2<-spreading_matrix(cenarios,pessoas,0.3,0.6)
 pessoas_e_probabilidades3<-spreading_matrix(cenarios,pessoas,0.3,0.9)
 
-# cumulativa das probabilidades beliver
-#hist(pessoas_e_probabilidades[,3],main='Histograma das probabilidades - Beliver',xlab='Probabilidades',ylab='Frequência')
-plot(ecdf(pessoas_e_probabilidades1[,3]),main='Função Cumulativa - Beliver',xlab='Chance',ylab='Probabilidades',col="blue")
+# cumulativa das probabilidades Believer
+#hist(pessoas_e_probabilidades[,3],main='Histograma das probabilidades - Believer',xlab='Probabilidades',ylab='Frequência')
+plot(ecdf(pessoas_e_probabilidades1[,3]),main='Função Cumulativa - Believer',xlab='Taxa',ylab='Probabilidades',col="blue")
 par(new=T)
 plot(ecdf(pessoas_e_probabilidades2[,3]),main='',xlab='',ylab='',axes=FALSE,col="green")
 par(new=T)
@@ -70,9 +70,9 @@ plot(ecdf(pessoas_e_probabilidades3[,3]),main='',xlab='',ylab='',axes=FALSE,col=
 legend("topleft", inset=.05, title="beta = 0.3", c("alfa = 0.3","alfa = 0.6","alfa = 0.9"), fill=c("blue", 'green', 'red'), horiz=FALSE)
 
 
-# cumulativa das probabilidades not beliver
-#hist(pessoas_e_probabilidades[,4],main='Histograma das probabilidades - Not Beliver',xlab='Probabilidades',ylab='Frequência')
-plot(ecdf(pessoas_e_probabilidades1[,4]),main='Função Cumulativa - Not Beliver',xlab='Chance',ylab='Probabilidades',col="blue")
+# cumulativa das probabilidades not Believer
+#hist(pessoas_e_probabilidades[,4],main='Histograma das probabilidades - Not Believer',xlab='Probabilidades',ylab='Frequência')
+plot(ecdf(pessoas_e_probabilidades1[,4]),main='Função Cumulativa - Not Believer',xlab='Taxa',ylab='Probabilidades',col="blue")
 par(new=T)
 plot(ecdf(pessoas_e_probabilidades2[,4]),main='',xlab='',ylab='',axes=FALSE,col="green")
 par(new=T)
@@ -85,9 +85,9 @@ pessoas_e_probabilidades1<-spreading_matrix(cenarios,pessoas,0.6,0.3)
 pessoas_e_probabilidades2<-spreading_matrix(cenarios,pessoas,0.6,0.6)
 pessoas_e_probabilidades3<-spreading_matrix(cenarios,pessoas,0.6,0.9)
 
-# cumulativa das probabilidades beliver
-#hist(pessoas_e_probabilidades[,3],main='Histograma das probabilidades - Beliver',xlab='Probabilidades',ylab='Frequência')
-plot(ecdf(pessoas_e_probabilidades1[,3]),main='Função Cumulativa - Beliver',xlab='Chance',ylab='Probabilidades',col="blue")
+# cumulativa das probabilidades Believer
+#hist(pessoas_e_probabilidades[,3],main='Histograma das probabilidades - Believer',xlab='Probabilidades',ylab='Frequência')
+plot(ecdf(pessoas_e_probabilidades1[,3]),main='Função Cumulativa - Believer',xlab='Taxa',ylab='Probabilidades',col="blue")
 par(new=T)
 plot(ecdf(pessoas_e_probabilidades2[,3]),main='',xlab='',ylab='',axes=FALSE,col="green")
 par(new=T)
@@ -95,9 +95,9 @@ plot(ecdf(pessoas_e_probabilidades3[,3]),main='',xlab='',ylab='',axes=FALSE,col=
 legend("topleft", inset=.05, title="beta = 0.6", c("alfa = 0.3","alfa = 0.6","alfa = 0.9"), fill=c("blue", 'green', 'red'), horiz=FALSE)
 
 
-# cumulativa das probabilidades not beliver
-#hist(pessoas_e_probabilidades[,4],main='Histograma das probabilidades - Not Beliver',xlab='Probabilidades',ylab='Frequência')
-plot(ecdf(pessoas_e_probabilidades1[,4]),main='Função Cumulativa - Not Beliver',xlab='Chance',ylab='Probabilidades',col="blue")
+# cumulativa das probabilidades not believer
+#hist(pessoas_e_probabilidades[,4],main='Histograma das probabilidades - Not believer',xlab='Probabilidades',ylab='Frequência')
+plot(ecdf(pessoas_e_probabilidades1[,4]),main='Função Cumulativa - Not believer',xlab='Taxa',ylab='Probabilidades',col="blue")
 par(new=T)
 plot(ecdf(pessoas_e_probabilidades2[,4]),main='',xlab='',ylab='',axes=FALSE,col="green")
 par(new=T)
@@ -110,9 +110,9 @@ pessoas_e_probabilidades1<-spreading_matrix(cenarios,pessoas,0.9,0.3)
 pessoas_e_probabilidades2<-spreading_matrix(cenarios,pessoas,0.9,0.6)
 pessoas_e_probabilidades3<-spreading_matrix(cenarios,pessoas,0.9,0.9)
 
-# cumulativa das probabilidades beliver
-#hist(pessoas_e_probabilidades[,3],main='Histograma das probabilidades - Beliver',xlab='Probabilidades',ylab='Frequência')
-plot(ecdf(pessoas_e_probabilidades1[,3]),main='Função Cumulativa - Beliver',xlab='Chance',ylab='Probabilidades',col="blue")
+# cumulativa das probabilidades believer
+#hist(pessoas_e_probabilidades[,3],main='Histograma das probabilidades - believer',xlab='Probabilidades',ylab='Frequência')
+plot(ecdf(pessoas_e_probabilidades1[,3]),main='Função Cumulativa - believer',xlab='Taxa',ylab='Probabilidades',col="blue")
 par(new=T)
 plot(ecdf(pessoas_e_probabilidades2[,3]),main='',xlab='',ylab='',axes=FALSE,col="green")
 par(new=T)
@@ -120,9 +120,9 @@ plot(ecdf(pessoas_e_probabilidades3[,3]),main='',xlab='',ylab='',axes=FALSE,col=
 legend("topleft", inset=.05, title="beta = 0.9", c("alfa = 0.3","alfa = 0.6","alfa = 0.9"), fill=c("blue", 'green', 'red'), horiz=FALSE)
 
 
-# cumulativa das probabilidades not beliver
-#hist(pessoas_e_probabilidades[,4],main='Histograma das probabilidades - Not Beliver',xlab='Probabilidades',ylab='Frequência')
-plot(ecdf(pessoas_e_probabilidades1[,4]),main='Função Cumulativa - Not Beliver',xlab='Chance',ylab='Probabilidades',col="blue")
+# cumulativa das probabilidades not believer
+#hist(pessoas_e_probabilidades[,4],main='Histograma das probabilidades - Not believer',xlab='Probabilidades',ylab='Frequência')
+plot(ecdf(pessoas_e_probabilidades1[,4]),main='Função Cumulativa - Not believer',xlab='Taxa',ylab='Probabilidades',col="blue")
 par(new=T)
 plot(ecdf(pessoas_e_probabilidades2[,4]),main='',xlab='',ylab='',axes=FALSE,col="green")
 par(new=T)
