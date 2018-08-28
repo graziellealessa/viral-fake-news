@@ -4,17 +4,16 @@
 
 # Importanto bibliotecas
 library(triangle)
-#library(igraph)
 
 # Geracao de dados iniciais
 # Definicao de num. de amigos de uma pessoa
 qntMinAmigos<-1
-qntMax<-200
+qntMax<-500
 qntMinAmigosB<-0
 
 # Parametros do modelo
-beta<-0.7
-alfa<-0.4
+beta<-0.7 # parametro de espalhamento
+alfa<-0.4 # parametro de credibilidade da noticia
 
 #verificar com a Beatriz
 pverify<-0.1
@@ -59,8 +58,10 @@ spreading_matrix<-function(NC = cenarios, pessoas){
 pessoas<-gera_pessoas()
 pessoas_e_probabilidades<-spreading_matrix(cenarios,pessoas)
 
-#histograma das probabilidades fi
-hist(pessoas_e_probabilidades[,3],main='Histograma das probabilidades fi',xlab='Probabilidades',ylab='Frequência')
+#histograma e cumulativa das probabilidades fi
+hist(pessoas_e_probabilidades[,3],main='Histograma das probabilidades - Beliver',xlab='Probabilidades',ylab='Frequência')
+plot(ecdf(pessoas_e_probabilidades[,3]),main='Função Cumulativa - Beliver',xlab='Chance',ylab='Probabilidades')
 
-#histograma das probabilidades gi
-hist(pessoas_e_probabilidades[,4],main='Histograma das probabilidades gi',xlab='Probabilidades',ylab='Frequência')
+#histograma e cumulativa das probabilidades gi
+hist(pessoas_e_probabilidades[,4],main='Histograma das probabilidades - Not Beliver',xlab='Probabilidades',ylab='Frequência')
+plot(ecdf(pessoas_e_probabilidades[,4]),main='Função Cumulativa - Not Beliver',xlab='Chance',ylab='Probabilidades')
